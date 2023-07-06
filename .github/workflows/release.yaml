@@ -61,9 +61,9 @@ jobs:
         run: |
           curl \
             -X POST \
-            -H "Authorization: token $GITHUB_TOEKEN" \
-            -H "Content-Type: $asset_content_type" \
-            --data-binary "@$asset_path" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Content-Type: multipart/form-data" \
+            -F "file=@$asset_path;filename=$asset_name;type=$asset_content_type" \
             "$upload_url?name=$asset_name&label=$asset_label"
 
             # - name: upload chart to release artifacts
